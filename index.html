@@ -3,16 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-Time Chat App</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
-    <script type="module" src="app.js"></script>
+    <title>Simple Chat App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #app {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #chat-container {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        #messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        .sender {
+            background-color: #dcf8c6;
+            align-self: flex-end;
+        }
+        .recipient {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+        }
+        #message-input {
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 0 0 5px 5px;
+        }
+        #join-container {
+            display: none;
+            text-align: center;
+        }
+        #settings-menu {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-
-    <h1>Real-Time Chat App</h1>
-    <div id="messages"></div>
-    <input type="text" id="message-input" placeholder="Type your message here...">
-    <button id="send-button">Send</button>
-
+    <div id="app">
+        <h1>Simple Chat App</h1>
+        <button id="host-btn">Host Chat</button>
+        <button id="join-btn">Join Chat</button>
+        <div id="join-container">
+            <input type="text" id="room-code" placeholder="Enter room code" />
+            <button id="join-room-btn">Join Room</button>
+        </div>
+        <div id="chat-container">
+            <div id="messages"></div>
+            <input type="text" id="message-input" placeholder="Type your message..." />
+            <button id="send-btn">Send</button>
+        </div>
+        <div id="settings-menu">
+            <input type="text" id="username" placeholder="Enter your username" />
+            <input type="text" id="avatar-url" placeholder="Enter avatar URL" />
+            <button onclick="toggleSettings()">Close</button>
+        </div>
+        <button onclick="toggleSettings()">⚙️</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
